@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Bloquear recursos estáticos innecesarios para bots
+Disallow: /static/js/
+Disallow: /static/css/
+Disallow: /static/media/
+
+# Sitemap
+Sitemap: https://origen-restaurant.pe/sitemap.xml
