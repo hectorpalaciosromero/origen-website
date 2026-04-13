@@ -89,14 +89,19 @@ function ReservationModal({ isOpen, onClose }) {
 
   const handleBooking = (e) => {
     e.preventDefault();
-    const str = `¡Hola! Soy ${formData.name}. Solicito una reserva VIP:%0A%0A` +
-      `👥 Personas: *${formData.pax}*%0A` +
-      `📅 Fecha: *${formData.date}*%0A` +
-      `⏰ Hora: *${formData.timeDisplay}*%0A` +
-      `🥂 Ocasión: *${formData.occasion}*%0A%0A` +
-      `Quedo atento a la confirmación.`;
+    const lines = [
+      `Hola, soy *${formData.name}*.`,
+      `Solicito una reserva VIP en ORIGEN:`,
+      ``,
+      `- Personas: *${formData.pax}*`,
+      `- Fecha: *${formData.date}*`,
+      `- Hora: *${formData.timeDisplay}*`,
+      `- Ocasion: *${formData.occasion}*`,
+      ``,
+      `Quedo atento a la confirmacion.`,
+    ];
 
-    const url = `https://wa.me/${BRAND.whatsapp}?text=${str}`;
+    const url = `https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent(lines.join('\n'))}`;
     window.open(url, '_blank', 'noopener,noreferrer');
     onClose();
   };
